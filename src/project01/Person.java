@@ -1,9 +1,10 @@
 package project01;
 
 public abstract class Person {
-	private String name;
+	protected String name;
 	protected String address;
 	
+	//setter & getter
 	public String getName() {
 		return name;
 	}
@@ -18,6 +19,9 @@ public abstract class Person {
 		this.address = address;
 	}
 	
+
+	
 	abstract public void showInfo(String name);
 
+	abstract public void showInfo2();
 }
