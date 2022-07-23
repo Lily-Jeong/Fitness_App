@@ -68,18 +68,41 @@ public class Trainer extends Person {
 		trainers.add(new Trainer(id, name, address, type, award));
 	}
 	
-	//트레이너의 경우 전체 정보를 모두 출력함.
+	
+	//트레이너 이름 검색 = > 해당 트레이너 정보만 출력.
 	@Override
 	public void showInfo(String name) {
-		
+		System.out.println("트레이너 이름을 입력하세요 => ");
+		Scanner sc = new Scanner(System.in);
+		name = sc.next();
+		for(int i=0; i< trainers.size(); i++) {
+			if(name.equals(trainers.get(i).getName())) {
+					System.out.println("트레이너 번호 : "+trainers.get(i).getId()+"\n이름 : "+trainers.get(i).getName()
+							+"\n주소 : "+trainers.get(i).getAddress()+"\n전분 분야 : "+trainers.get(i).getType()
+							+"\n수상 이력 : "+trainers.get(i).getAward());
+			}
+		}
 	}
 	
-	public void showInfo2() {
+	//트레이너 전체 정보 출력.
+	public void showAll() {
 		for(int i=0; i < trainers.size(); i++) {
-			System.out.println("트레이너 ID : "+trainers.get(i).getId()+"\n이름 : "+trainers.get(i).getName()+
+			System.out.println("트레이너 번호 : "+trainers.get(i).getId()+"\n이름 : "+trainers.get(i).getName()+
 			"\n전문 분야 : "+trainers.get(i).getType()+"\n수상경력 : "+trainers.get(i).getAward());
 			System.out.println();
 		}
 	}//----------------------
+	
+	public void deleteInfo(String name) {
+		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
+		Scanner sc = new Scanner(System.in);
+		name = sc.next();
+		for(int i=0; i<trainers.size(); i++) {
+			if(name.equals(trainers.get(i).getName())) {
+				trainers.remove(trainers.get(i));
+			}
+		}
+			
+	}
 	
 }

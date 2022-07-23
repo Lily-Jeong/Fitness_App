@@ -34,4 +34,21 @@ public class HealthClubApp {
 		System.out.println("-----------------------------");
 	}
 	
+	public void searchMenu() {
+		System.out.println("---------- 검색 메뉴 ----------");
+		System.out.println("1. 회원 정보 검색");
+		System.out.println("2. 트레이너 정보 검색");
+		System.out.println("3. 스태프 정보 검색");
+		System.out.println("4. 상위 메뉴로");
+		System.out.println("-----------------------------");
+	}
+	
+	public void deleteMenu() {
+		System.out.println("---------- 삭제 메뉴 ----------");
+		System.out.println("1. 회원 정보 삭제");
+		System.out.println("2. 트레이너 정보 삭제");
+		System.out.println("3. 스태프 정보 삭제");
+		System.out.println("4. 상위 메뉴로");
+		System.out.println("-----------------------------");
+	}
 }

@@ -23,5 +23,7 @@ public abstract class Person {
 	
 	abstract public void showInfo(String name);
 
-	abstract public void showInfo2();
+	abstract public void showAll();
+	
+	abstract public void deleteInfo(String name);
 }

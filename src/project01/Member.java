@@ -1,5 +1,7 @@
 package project01;
 import java.util.*;
+import java.lang.Exception;
+
 
 public class Member extends Person {
 	private int id;
@@ -68,7 +70,7 @@ public class Member extends Person {
 	}
 	
 
-	//회원의 경우 이름을 검색해서 본인의 정보만 확인함.
+	//이름을 검색해서 본인의 정보만 확인함.
 	@Override
 	public void showInfo(String name) {
 		System.out.println("이름을 입력하세요 => ");
@@ -76,13 +78,32 @@ public class Member extends Person {
 		name = sc.next();
 		for(int i=0; i< member.size(); i++) {
 			if(name.equals(member.get(i).getName())) {
-					System.out.println("회원 ID : "+member.get(i).getId()+"\n이름 : "+member.get(i).getName()
+					System.out.println("회원 번호 : "+member.get(i).getId()+"\n이름 : "+member.get(i).getName()
 							+"\n주소 : "+member.get(i).getAddress()+"\n운동 목적 : "+member.get(i).getPurpose()
 							+"\n회원권 : "+member.get(i).getMemberType());
 			}
 		}
 	}//---------------------
-	public void showInfo2() {
-		
+	//전체 정보를 다 출력함.
+	public void showAll() {
+		for(int i=0; i< member.size(); i++) {
+				System.out.println("회원 번호 : "+member.get(i).getId()+"\n이름 : "+member.get(i).getName()
+						+"\n주소 : "+member.get(i).getAddress()+"\n운동 목적 : "+member.get(i).getPurpose()
+						+"\n회원권 : "+member.get(i).getMemberType());
+				System.out.println("--------------------");
+		}
 	}
+	
+	public void deleteInfo(String name) {
+		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
+		Scanner sc = new Scanner(System.in);
+		name = sc.next();
+		for(int i=0; i<member.size(); i++) {
+			if(name.equals(member.get(i).getName())) {
+				member.remove(member.get(i));
+			}
+		}
+			
+	}
+		
 }

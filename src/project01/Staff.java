@@ -60,17 +60,40 @@ public class Staff extends Person {
 		staff.add(new Staff(id, name, address, dept, workYears));
 	}
 	
-	//스태프의 경우 트레이너와 마찬가지로 정보확인시 전체정보 출력함.
+	//스태프 이름 검색 => 해당 정보만 출력.
 	@Override
 	public void showInfo(String name) {
+		System.out.println("트레이너 이름을 입력하세요 => ");
+		Scanner sc = new Scanner(System.in);
+		name = sc.next();
+		for(int i=0; i< staff.size(); i++) {
+			if(name.equals(staff.get(i).getName())) {
+					System.out.println("스태프 번호 : "+staff.get(i).getId()+"\n이름 : "+staff.get(i).getName()
+							+"\n주소 : "+staff.get(i).getAddress()+"\n담당 업무 : "+staff.get(i).getDept()
+							+"\n근속연수 : "+staff.get(i).getWorkYears());
+			}
+		}
 		
 	}
-	public void showInfo2() {
+	//스태프 전체 정보 출력.
+	public void showAll() {
 		for(int i=0; i < staff.size(); i++) {
-			System.out.println("스태프 ID : "+staff.get(i).getId()+"\n이름 : "+staff.get(i).getName()+
+			System.out.println("스태프 번호 : "+staff.get(i).getId()+"\n이름 : "+staff.get(i).getName()+
 			"\n담당 업무 : "+staff.get(i).getDept()+"\n근속연수 : "+staff.get(i).getWorkYears());
 			System.out.println();
 		}
+	}//----------------
+	
+	public void deleteInfo(String name) {
+		System.out.println("삭제할 스태프의 이름을 입력하세요 => ");
+		Scanner sc = new Scanner(System.in);
+		name = sc.next();
+		for(int i=0; i<staff.size(); i++) {
+			if(name.equals(staff.get(i).getName())) {
+				staff.remove(staff.get(i));
+			}
+		}
+			
 	}
 
 }

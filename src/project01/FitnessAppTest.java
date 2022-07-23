@@ -36,14 +36,16 @@ public class FitnessAppTest {
 				hc.confirmMenu();
 				int input2 = sc.nextInt();
 				switch(input2) {
-				case 1 : input2 = 1;	//회원 정보 확인 메뉴 : 이름 입력 => 해당 정보만 확인.
-					m1.showInfo(null);
+				case 1 : input2 = 1;	//회원 전체 정보를 보여주는 메뉴.
+					m1.showAll();
 					continue;
 				case 2 : input2 = 2;	// 트레이너 전체 정보를 보여주는 메뉴.
-					t1.showInfo2();
+					t1.showAll();
 					continue;
 				case 3 : input2 = 3;	// 스태프 전체 정보를 보여주는 메뉴.
-					s1.showInfo2();
+					s1.showAll();
+					continue;
+				case 4 : input2 = 4;
 					continue;
 				default : ;
 					System.out.println("메뉴에 없는 선택지입니다. 다시 선택해주세요.");
@@ -51,17 +53,49 @@ public class FitnessAppTest {
 				}
 				
 			} else if(input == 3) {
+				hc.searchMenu();
+				int input3 = sc.nextInt();
+				switch(input3) {
+				case 1 : input3 = 1;	// 회원 이름 검색 => 해당 정보만 출력.
+					m1.showInfo(null);
+					continue;
+				case 2 : input3 = 2;	// 트레이너 이름 검색 => 해당 정보만 출력.
+					t1.showInfo(null);
+					continue;
+				case 3 : input3 = 3;	// 스태프 이름 검색 => 해당 정보만 출력.
+					s1.showInfo(null);
+					continue;
+				case 4 : input3 = 4;
+					continue;
+				default : ;
+					System.out.println("메뉴에 없는 선택지입니다. 다시 선택해주세요.");
+					continue;
+				}
 				
 			} else if(input == 4) {
-				
+				hc.deleteMenu();
+				int input4 = sc.nextInt();
+				switch(input4) {
+				case 1 : input4 = 1;
+					m1.deleteInfo(null);
+					continue;
+				case 2 : input4 = 2;
+					t1.deleteInfo(null);
+					continue;
+				case 3 : input4 = 3;
+					s1.deleteInfo(null);
+					continue;
+				case 4 : input4 = 4;
+					continue;
+				}
 			} else if(input == 9) {
 				break;
 			} else {
-				System.out.println("실행할 기능을 다시 확인해주세요.");
+				System.out.println("메뉴에 없는 기능입니다. 다시 선택해주세요.");
 				continue;
 			}
 			
-
+			
 		}
 		
 	}
