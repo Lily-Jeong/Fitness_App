@@ -93,7 +93,7 @@ public class Member extends Person {
 				System.out.println("--------------------");
 		}
 	}
-	//회원정보 삭제.
+	//회원정보 삭제 
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);

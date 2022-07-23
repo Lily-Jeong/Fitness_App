@@ -20,7 +20,7 @@ public abstract class Person {
 	}
 	
 
-	//추상화해서 자식 클래스들에서 재정의할 메뉴들.
+	//추상화해서 자식 클래스들에서 재정의할 메뉴들 
 	abstract public void showInfo(String name);
 
 	abstract public void showAll();

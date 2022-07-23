@@ -1,7 +1,8 @@
 package project01;
 import java.util.*;
 
-//예외 설정, instanceof 활용 아직 못함.
+//예외 설정
+//instanceof 활용 아직 못함.
 //하지만 기본적인 기능은 실행할 수 있는 상태.
 
 public class FitnessAppTest {

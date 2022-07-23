@@ -83,7 +83,7 @@ public class Staff extends Person {
 			System.out.println();
 		}
 	}//----------------
-	//스태프 정보 삭제.
+	//스태프 정보 삭제 
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 스태프의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);

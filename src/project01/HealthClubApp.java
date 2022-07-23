@@ -42,7 +42,7 @@ public class HealthClubApp {
 		System.out.println("4. 상위 메뉴로");
 		System.out.println("-----------------------------");
 	}
-	//삭제 메뉴 
+	//삭제 메뉴.
 	public void deleteMenu() {
 		System.out.println("---------- 삭제 메뉴 ----------");
 		System.out.println("1. 회원 정보 삭제");

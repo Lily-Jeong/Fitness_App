@@ -92,7 +92,7 @@ public class Trainer extends Person {
 			System.out.println();
 		}
 	}//----------------------
-	//트레이너 정보 삭제.
+	//트레이너 정보 삭제 
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
