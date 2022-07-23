@@ -1,6 +1,9 @@
 package project01;
 import java.util.*;
 
+//예외 설정, instanceof 활용 아직 못함.
+//하지만 기본적인 기능은 실행할 수 있는 상태.
+
 public class FitnessAppTest {
 	
 	public static void main(String[] args) {
@@ -94,8 +97,6 @@ public class FitnessAppTest {
 				System.out.println("메뉴에 없는 기능입니다. 다시 선택해주세요.");
 				continue;
 			}
-			
-			
 		}
 		
 	}

@@ -45,7 +45,7 @@ public class Trainer extends Person {
 	 * 그 트레이너의 정보 전체를 ArrayList 에 추가하는 메서드 만들기!
 	 * 
 	 */
-	
+	//트레이너 정보 입력받을 배열 생성.
 	ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 	public void trainerRegister() {	//1-2 트레이너 등록.
 		int id;
@@ -92,7 +92,7 @@ public class Trainer extends Person {
 			System.out.println();
 		}
 	}//----------------------
-	
+	//트레이너 정보 삭제.
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);

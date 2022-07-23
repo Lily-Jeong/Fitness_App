@@ -37,7 +37,7 @@ public class Staff extends Person {
 		this.dept = dept;
 		this.workYears = workYears;
 	}
-	
+	//데이터를 입력 받을 배열 생성.
 	ArrayList<Staff> staff = new ArrayList<Staff>();
 	public void staffRegister() {	//1-3 스태프 등록.
 		int id;
@@ -83,7 +83,7 @@ public class Staff extends Person {
 			System.out.println();
 		}
 	}//----------------
-	
+	//스태프 정보 삭제.
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 스태프의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);

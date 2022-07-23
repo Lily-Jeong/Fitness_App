@@ -2,7 +2,7 @@ package project01;
 import java.util.*;
 
 public class HealthClubApp {
-
+	//메인 메뉴 
 	public void showMenu() {
 			System.out.println("========== FITNESS CLUB APP v1.1 ==========");
 			System.out.println("1. 정보 등록");
@@ -14,7 +14,7 @@ public class HealthClubApp {
 			System.out.println("입력하세요 => ");
 			System.out.println("-------------------------------------------");
 	}
-	
+	//등록 메뉴 
 	public void registerMenu() {
 			System.out.println("---------- 등록 메뉴 ----------");
 			System.out.println("1. 회원 등록");
@@ -24,7 +24,7 @@ public class HealthClubApp {
 			System.out.println("-----------------------------");
 	}
 	
-	
+	//확인 메뉴 
 	public void confirmMenu() {
 		System.out.println("---------- 확인 메뉴 ----------");
 		System.out.println("1. 회원 정보 확인");
@@ -33,7 +33,7 @@ public class HealthClubApp {
 		System.out.println("4. 상위 메뉴로");
 		System.out.println("-----------------------------");
 	}
-	
+	//검색 메뉴 
 	public void searchMenu() {
 		System.out.println("---------- 검색 메뉴 ----------");
 		System.out.println("1. 회원 정보 검색");
@@ -42,7 +42,7 @@ public class HealthClubApp {
 		System.out.println("4. 상위 메뉴로");
 		System.out.println("-----------------------------");
 	}
-	
+	//삭제 메뉴 
 	public void deleteMenu() {
 		System.out.println("---------- 삭제 메뉴 ----------");
 		System.out.println("1. 회원 정보 삭제");
