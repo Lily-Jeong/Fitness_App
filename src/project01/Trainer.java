@@ -3,6 +3,7 @@ package project01;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Trainer extends Person {
 	private int id;
 	private String type;
@@ -30,7 +31,12 @@ public class Trainer extends Person {
 	public Trainer() {
 		
 	}
-	public Trainer(int id, String name, String address, String type, String award) {
+	public Trainer(int id, String name, String address, String type, String award) throws IDFormatException {
+		if(id == 0) {
+			throw new IDFormatException("트레이너번호는 0번일 수 없습니다. 다시 입력해주세요.");
+		} else if(id > 3000 || id < 2000) {
+			throw new IDFormatException("트레이너번호는 2000번대로만 지정 가능합니다. 다시 입력해주세요.");
+		}
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -64,8 +70,11 @@ public class Trainer extends Person {
 		type = sc.next();
 		System.out.println("수상경력을 입력하세요 => ");
 		award = sc.next();
-		
-		trainers.add(new Trainer(id, name, address, type, award));
+		try {
+			trainers.add(new Trainer(id, name, address, type, award));
+		} catch(IDFormatException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	

@@ -27,12 +27,17 @@ public class Member extends Person {
 		this.memberType = memberType;
 	}
 	
+	
 	//정보를 입력받는 생성자
 	public Member() {
 		
 	}
-	
-	public Member(int id, String name, String address, int purpose, int memberType) {
+	public Member(int id, String name, String address, int purpose, int memberType) throws IDFormatException {
+		if(id == 0) {
+			throw new IDFormatException("회원번호는 0번일 수 없습니다. 다시 입력해주세요.");
+		} else if(id > 2000 || id < 1000) {
+			throw new IDFormatException("회원번호는 1000번대로만 지정 가능합니다. 다시 입력해주세요.");
+		}
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -44,7 +49,8 @@ public class Member extends Person {
 	ArrayList<Member> member = new ArrayList<Member>(30);
 	
 	
-	public void memberRegister() {	//1-1 회원 등록.
+	//1-1 회원 등록.
+	public void memberRegister() {	
 		
 		int id;
 		String name;
@@ -61,13 +67,31 @@ public class Member extends Person {
 		System.out.println("운동 목적을 입력하세요 => ");
 		System.out.println("1)체중감량, 2)근력증진, 3)지구력/체력 증진");
 		purpose = sc.nextInt();
-		System.out.println("회원권 타입을 입력하세요 => ");
-		System.out.println("1)1개월권, 2)3개월권, 3)6개월권, 4)12개월권");
-		memberType = sc.nextInt();
-		
-		member.add(new Member(id, name, address, purpose, memberType));
+		if (purpose > 3) {
+			System.out.println("보기에 없는 선택지입니다. 다시 입력해주세요.");
+			return;
+		} else if (purpose < 1) {
+			System.out.println("보기에 없는 선택지입니다. 다시 입력해주세요.");
+			
+		} else {
+			System.out.println("회원권 타입을 입력하세요 => ");
+			System.out.println("1)1개월권, 2)3개월권, 3)6개월권, 4)12개월권");
+			memberType = sc.nextInt();
+			if (memberType > 4) {
+				System.out.println("보기에 없는 선택지입니다. 다시 입력해주세요.");
+				return;
+			} else if (memberType < 1) {
+				System.out.println("보기에 없는 선택지입니다. 다시 입력해주세요.");
+				return;
+			} else {
+				try {
+					member.add(new Member(id, name, address, purpose, memberType));
+				} catch (IDFormatException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
 	}
-	
 
 	//이름을 검색해서 본인의 정보만 표시.
 	@Override
