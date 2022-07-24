@@ -45,7 +45,7 @@ public class Member extends Person {
 	ArrayList<Member> member = new ArrayList<Member>(30);
 	
 	
-	public void memberRegister() {	//1-1 회원 등록.
+	public void memberRegister(){	//1-1 회원 등록.
 		
 		int id;
 		String name;
