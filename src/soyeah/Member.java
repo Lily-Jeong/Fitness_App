@@ -1,6 +1,4 @@
 package MiniProject;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 public class Member extends Person{
@@ -13,9 +11,7 @@ public class Member extends Person{
 	}
 	
 	//매개변수 받는 생성자
-	public Member(String name, String address, int id, String purpose, String memberType) {
-		this.name = name;
-		this.address = address;
+	public Member(int id, String purpose, String memberType) {
 		this.id = id;
 		this.purpose = purpose;
 		this.memberType = memberType;
@@ -45,68 +41,54 @@ public class Member extends Person{
 	}
 	
 	/**
-	 * 부모클래스인 Person의 register 메소드를
+	 * 부모클래스인 Person의 showMenu 메소드를
 	 * 오버라이딩한다.
 	 */
-	ArrayList<Member> member = new ArrayList<Member>(30);
-	
 	@Override
-	public void register() {
+	public void showMenu() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("-------------");
-		System.out.println("회원 이름을 입력하세요=>");
-		name = sc.next();
-		System.out.println("-------------");
-		System.out.println("회원 주소를 입력하세요=>");
-		address = sc.next();
+		Member mb = new Member();
 		System.out.println("-------------");
 		System.out.println("회원 번호를 입력하세요=>");
-		id = sc.nextInt();
+		int id = sc.nextInt();
+		
+		mb.setId(id);
 		System.out.println("-------------");
 		System.out.println("회원의 운동 목적을 입력하세요=>");
-		purpose = sc.next();
+		String purpose = sc.next();
+		mb.setPurpose(purpose);
 		System.out.println("-------------");
 		System.out.println("회원 등록 기간을 입력하세요(개월)=>");
-		memberType = sc.next();
+		String memberType = sc.next();
+		mb.setMemberType(memberType);
 		System.out.println("-------------");
-		member.add(new Member(name, address, id, purpose, memberType));
-		String content = "-------회원-------"+"\n"
-				 +"이름: "+name+"\n"
-				 +"주소: "+address+"\n"
-				 +"번호: "+id+"\n"
-				 +"목적: "+purpose+"\n"
-				 +"유형: "+memberType+"\n\n";
-		while(true) {
-
-			System.out.println("-------------");
-			System.out.println("1. 정보 저장");
-			System.out.println("9. 종료");
-
-			System.out.println("--------------");
-			System.out.println("메뉴를 선택해주세요");
-			System.out.println("--------------");
-			int sv = sc.nextInt();
-			switch(sv){
-				case 1:
-					String fileName = "C:\\Users\\A0501560\\git\\multicampus_java\\Begin\\src\\MiniProject\\List.txt";
-					try {
-						FileWriter fw = new FileWriter(fileName, true);
-						fw.write(content);
-						fw.flush();
-						fw.close();
-						System.out.println(fileName+"에 저장 완료!");
-					}catch(IOException ex) {
-						System.out.println("파일 쓰기 중 에러: "+ex.getMessage());
-					}
-					break;
-				case 9:
-					System.out.println("시스템을 종료합니다.");
-					break;
-				default:
-					System.out.println("메뉴 중에서 선택해주세요.");
-					continue;
-			}break;
-		}
 	}
+	
+//	@Override
+	public void showInfo() {
+		Member mb = new Member();
+		Person ps = new Person();
+		System.out.println("---회원 정보---"); //instanceOf로 나중에 바꾸기
+		System.out.println("회원     이름: "+ps.getName());
+		System.out.println("회원     주소: "+ps.getAddress());
+		System.out.println("회원     번호: "+mb.getId());
+		System.out.println("운동     목적: "+mb.getPurpose());
+		System.out.println("회원 등록 기간: "+mb.getMemberType());
+	}
+//	//day11.ObjectTest의 id값과 name값이 같으면 true를 반환하게 하기위한 재정의
+//	@Override
+//	public boolean equals(Object obj) {
+//		if(obj instanceof Member) {
+//			Member user = (Member)obj;
+//			boolean bool = user.name.equals(this.name)&& user.id == this.id;
+//			return bool;
+//			
+//		}
+//		else {
+//			return false;
+//		}
+//	}
+
 		
-}//Member////////////
+		
+	}//Student////////////
