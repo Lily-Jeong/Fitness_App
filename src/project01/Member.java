@@ -31,6 +31,14 @@ public class Member extends Person {
 	public Member() {
 		
 	}
+	public Member(int id) throws IDFormatException {
+		if(id == 0) {
+			throw new IDFormatException("회원번호는 0번일 수 없습니다. 다시 입력해주세요.");
+		} else if(id > 2000 || id < 1000) {
+			throw new IDFormatException("회원번호는 1000번대로만 지정 가능합니다. 다시 입력해주세요.");
+		}
+		this.id = id;
+	}
 	public Member(int id, String name, String address, int purpose, int memberType) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("회원번호는 0번일 수 없습니다. 다시 입력해주세요.");
@@ -59,6 +67,12 @@ public class Member extends Person {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("회원번호를 입력하세요 => ");
 		id = sc.nextInt();
+		try {
+			member.add(new Member(id));
+		} catch (IDFormatException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 		System.out.println("이름을 입력하세요 => ");
 		name = sc.next();
 		System.out.println("주소를 입력하세요 => ");

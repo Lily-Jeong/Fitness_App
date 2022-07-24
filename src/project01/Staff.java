@@ -29,8 +29,15 @@ public class Staff extends Person {
 	public Staff() {
 		
 	}
-	
-	public Staff(int id, String name, String address, String dept, double workYears) throws IDFormatException{
+	public Staff(int id) throws IDFormatException {
+		if(id == 0) {
+			throw new IDFormatException("스태프번호는 0번일 수 없습니다. 다시 입력해주세요.");
+		} else if(id > 3000 || id < 2000) {
+			throw new IDFormatException("스태프번호는 3000번대로만 지정 가능합니다. 다시 입력해주세요.");
+		}
+		this.id = id;
+	}
+	public Staff(int id, String name, String address, String dept, double workYears) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("스태프번호는 0번일 수 없습니다. 다시 입력해주세요.");
 		} else if(id > 3000 || id < 2000) {
@@ -53,6 +60,12 @@ public class Staff extends Person {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("스태프 번호를 입력하세요 => ");
 		id = sc.nextInt();
+		try {
+			staff.add(new Staff(id));
+		} catch (IDFormatException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 		System.out.println("이름을 입력하세요 => ");
 		name = sc.next();
 		System.out.println("주소를 입력하세요 => ");
@@ -63,9 +76,10 @@ public class Staff extends Person {
 		workYears = sc.nextDouble();
 		try {
 			staff.add(new Staff(id, name, address, dept, workYears));
-		} catch(IDFormatException e) {
+		} catch (IDFormatException e) {
 			System.out.println(e.getMessage());
 		}
+
 	}
 	
 	//스태프 이름 검색 => 해당 정보만 출력.
