@@ -44,13 +44,6 @@ public class Trainer extends Person {
 		this.award = award;
 	}
 
-	
-	/*
-	 * 트레이너의 각 요소 정보들을 각각 입력받아서
-	 * 하나의 트레이너 정보로 만든 다음,
-	 * 그 트레이너의 정보 전체를 ArrayList 에 추가하는 메서드 만들기!
-	 * 
-	 */
 	//트레이너 정보 입력받을 배열 생성.
 	ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 	public void trainerRegister() {	//1-2 트레이너 등록.

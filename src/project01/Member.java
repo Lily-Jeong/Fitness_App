@@ -27,7 +27,6 @@ public class Member extends Person {
 		this.memberType = memberType;
 	}
 	
-	
 	//정보를 입력받는 생성자
 	public Member() {
 		
@@ -127,7 +126,5 @@ public class Member extends Person {
 			}
 		}
 	}
-	
-	
-	
+
 }
