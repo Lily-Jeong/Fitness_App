@@ -1,6 +1,7 @@
 package project01;
 
 public abstract class Person {
+	
 	protected String name;
 	protected String address;
 	

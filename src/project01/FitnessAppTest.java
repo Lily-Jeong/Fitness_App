@@ -3,7 +3,7 @@ import java.util.*;
 
 //예외 설정 => 회원번호 1000번대, 트레이너 2000번대, 스태프 3000번대. 
 //ArrayList 회원수 30명(?)으로 제한.
-//기본적인 기능은 실행할 수 있는 상태.
+
 
 public class FitnessAppTest {
 	
