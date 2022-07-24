@@ -12,7 +12,6 @@ class IdException extends Exception {
 public class FitnessAppTest {
 	
 	public static void main(String[] args) throws IdException {
-		
 		Scanner sc = new Scanner(System.in);
 		Member m1 = new Member();
 		Trainer t1 = new Trainer();

@@ -2,7 +2,6 @@ package project01;
 import java.util.*;
 import java.lang.Exception;
 
-
 public class Member extends Person {
 	private int id;
 	private int purpose;
