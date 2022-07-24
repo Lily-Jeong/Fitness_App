@@ -50,24 +50,25 @@ public class HealthClubApp {
 	}
 	
 	public void remove() throws IOException, IndexOutOfBoundsException{
-		File file = new File("C:/Users/A0501560/git/multicampus_java/Begin/src/MiniProject/List.txt");		
-		FileWriter fw = new FileWriter(file);
+		
 		
 		System.out.println("--------------");
-		System.out.println("검색하고 싶은 이름을 입력하세요=>");
+		System.out.println("삭제하고 싶은 이름을 입력하세요=>");
 		System.out.println("--------------");
 		Scanner sc = new Scanner(System.in);
 		String name = sc.next();
 		
-		System.out.println("검색하고 싶은 id 번호를 입력하세요=>");
+		System.out.println("삭제하고 싶은 id 번호를 입력하세요=>");
 		System.out.println("--------------");
 		String num = sc.next();
 		
 		String str = Files.readString(Paths.get("C:/Users/A0501560/git/multicampus_java/Begin/src/MiniProject/List.txt"));
 		String[] token = str.split("\n\n");
 		
+		File file = new File("C:/Users/A0501560/git/multicampus_java/Begin/src/MiniProject/List.txt");		
+		FileWriter fw = new FileWriter(file);
 		fw.write("");
-		fw.flush();		
+		fw.flush();
 		
 		ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
 		for(int i = 0; i<token.length; i++) {
