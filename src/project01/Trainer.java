@@ -102,7 +102,6 @@ public class Trainer extends Person {
 				trainers.remove(trainers.get(i));
 			}
 		}
-			
 	}
 	
 }

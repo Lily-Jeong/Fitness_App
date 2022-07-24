@@ -42,7 +42,7 @@ public class Member extends Person {
 	}
 	
 	//정보 저장되는 배열.
-	ArrayList<Member> member = new ArrayList<Member>();
+	ArrayList<Member> member = new ArrayList<Member>(30);
 	
 	
 	public void memberRegister() {	//1-1 회원 등록.
@@ -93,7 +93,7 @@ public class Member extends Person {
 				System.out.println("--------------------");
 		}
 	}
-	//회원정보 삭제 
+	//회원정보 삭제.
 	public void deleteInfo(String name) {
 		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
@@ -103,7 +103,5 @@ public class Member extends Person {
 				member.remove(member.get(i));
 			}
 		}
-			
 	}
-		
 }

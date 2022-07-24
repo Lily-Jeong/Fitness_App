@@ -93,7 +93,6 @@ public class Staff extends Person {
 				staff.remove(staff.get(i));
 			}
 		}
-			
 	}
 
 }

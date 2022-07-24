@@ -11,7 +11,6 @@ public abstract class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String getAddress() {
 		return address;
 	}
@@ -26,4 +25,5 @@ public abstract class Person {
 	abstract public void showAll();
 	
 	abstract public void deleteInfo(String name);
+	
 }
