@@ -104,4 +104,13 @@ public class Member extends Person {
 			}
 		}
 	}
+	
+	//회원번호 예외 정의.
+	class IdException extends Exception {
+		IdException(String msg){
+			super(msg);
+		}
+	}
+	
+	
 }
