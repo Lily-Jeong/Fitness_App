@@ -4,14 +4,14 @@ import java.lang.Exception;
 
 //예외 설정 => 회원번호 1000번대, 트레이너 2000번대, 스태프 3000번대. 
 class IdException extends Exception {
-	IdException(String msg){
-		super(msg);
+	public IdException(String ie) {
+		super(ie);
 	}
 }
 
 public class FitnessAppTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IdException {
 		
 		Scanner sc = new Scanner(System.in);
 		Member m1 = new Member();
