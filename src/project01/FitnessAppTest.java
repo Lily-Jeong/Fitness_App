@@ -1,4 +1,5 @@
 package project01;
+import java.io.IOException;
 import java.util.*;
 
 //예외 설정 => 회원번호 1000번대, 트레이너 2000번대, 스태프 3000번대. 
@@ -6,7 +7,7 @@ import java.util.*;
 
 public class FitnessAppTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		Member m1 = new Member();
 		Trainer t1 = new Trainer();
