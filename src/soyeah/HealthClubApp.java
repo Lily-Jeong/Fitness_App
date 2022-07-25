@@ -47,7 +47,7 @@ public class HealthClubApp {
 				System.out.println(token[i]);
 			}
 		}
-	}
+	}//search
 	
 	public void remove() throws IOException, IndexOutOfBoundsException{
 		
@@ -82,9 +82,9 @@ public class HealthClubApp {
 				fw.flush();
 			}
 		}
-		System.out.println(file+"에 저장 완료!");
+		System.out.println("저장 완료!");
 		fw.close();
-	}
+	}//remove
 
 	public HealthClubApp() {
 	}
@@ -113,6 +113,6 @@ public class HealthClubApp {
 			hc.remove();
 		}
 		
-	}//if
+	}//main
 
-}
+}//HealthClubApp

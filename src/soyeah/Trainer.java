@@ -22,6 +22,14 @@ public class Trainer extends Person{
 		this.award = award;
 	}
 	
+	//사용자 예외 클래스 생성자
+		public Trainer(int id) throws IdException{
+			if(id>=2000 || id <1000) {
+				throw new IdException("회원 ID는 2000~2999의 숫자여야 합니다.");
+			}
+			this.id = id;
+		}
+	
 	public int getId() {
 		return id;
 	}
@@ -59,7 +67,17 @@ public class Trainer extends Person{
 		address = sc.next();
 		System.out.println("-------------");
 		System.out.println("트레이너 번호를 입력하세요=>");
-		id = sc.nextInt();
+		try {
+			id = sc.nextInt();
+			trainer.add(new Trainer(id));
+		}
+		catch(InputMismatchException e) {
+			System.out.println("점수는 숫자로 입력해야 합니다.");
+			return;
+		}catch(IdException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 		
 		System.out.println("-------------");
 		System.out.println("트레이너 전공을 입력하세요=>");
@@ -72,58 +90,49 @@ public class Trainer extends Person{
 		
 		trainer.add(new Trainer(name, address, id, type, award));
 		
-		String content = "-------트레이너-------"+"\n"
-				 +"이름: "+name+"\n"
-				 +"주소: "+address+"\n"
-				 +"번호: "+id+"\n"
-				 +"전공: "+type+"\n"
-				 +"입상 경력: "+award+"\n\n";
-		while(true) {
+		Trainer tn = new Trainer();
+		String title;
+		if(tn instanceof Person) {
+			title = "-------트레이너-------";
+			String content = title+"\n"
+					 +"이름: "+name+"\n"
+					 +"주소: "+address+"\n"
+					 +"번호: "+id+"\n"
+					 +"전공: "+type+"\n"
+					 +"입상 경력: "+award+"\n\n";
+			while(true) {
 
-			System.out.println("-------------");
-			System.out.println("1. 정보 저장");
-			System.out.println("9. 종료");
+				System.out.println("-------------");
+				System.out.println("1. 정보 저장");
+				System.out.println("9. 종료");
 
-			System.out.println("--------------");
-			System.out.println("메뉴를 선택해주세요");
-			System.out.println("--------------");
-			int sv = sc.nextInt();
-			switch(sv){
-				case 1:
-					String fileName = "C:\\Users\\A0501560\\git\\multicampus_java\\Begin\\src\\MiniProject\\List.txt";
-					try {
-						FileWriter fw = new FileWriter(fileName, true);
-						fw.write(content);
-						fw.flush();
-						fw.close();
-						System.out.println(fileName+"에 저장 완료!");
-					}catch(IOException ex) {
-						System.out.println("파일 쓰기 중 에러: "+ex.getMessage());
-					}
-					break;
-				case 9:
-					System.out.println("시스템을 종료합니다.");
-					break;
-				default:
-					System.out.println("메뉴 중에서 선택해주세요.");
-					continue;
-			}break;
+				System.out.println("--------------");
+				System.out.println("메뉴를 선택해주세요");
+				System.out.println("--------------");
+				int sv = sc.nextInt();
+				switch(sv){
+					case 1:
+						String fileName = "C:\\Users\\A0501560\\git\\multicampus_java\\Begin\\src\\MiniProject\\List.txt";
+						try {
+							FileWriter fw = new FileWriter(fileName, true);
+							fw.write(content);
+							fw.flush();
+							fw.close();
+							System.out.println("저장 완료!");
+						}catch(IOException ex) {
+							System.out.println("파일 쓰기 중 에러: "+ex.getMessage());
+						}
+						break;
+					case 9:
+						System.out.println("시스템을 종료합니다.");
+						break;
+					default:
+						System.out.println("메뉴 중에서 선택해주세요.");
+						continue;
+				}break;
+			}
 		}
 	}
-
-	public void showInfo() {
-		Person ps = new Person();
-		ps.setName(name);
-		ps.setAddress(address);
-		System.out.println("---트레이너 정보---"); //instanceOf로 나중에 바꾸기
-		System.out.println("직원     이름: "+name);
-		System.out.println("직원     주소: "+address);
-		System.out.println("트레이너     번호: "+id);
-		System.out.println("트레이너     이름: "+name);
-		System.out.println("트레이너 등록 기간: "+award);
-	}
-		
-	
 }//트레이너////////////
 		
 		

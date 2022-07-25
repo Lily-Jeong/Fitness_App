@@ -2,6 +2,8 @@ package MiniProject;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Person extends HealthClubApp{
@@ -45,7 +47,8 @@ public class Person extends HealthClubApp{
 		System.out.println("9. 종료");
 	}
 	
-	public void register() {
+	
+	public void register() throws IOException{
 		
 		Person ps = new Person();
 		Member mb = new Member();
@@ -67,6 +70,7 @@ public class Person extends HealthClubApp{
 			case 1:
 				System.out.println("회원 메뉴를 선택했습니다.");
 				System.out.println("-------------");
+				mb.thirdty();
 				mb.register();
 				break;
 			case 2:
@@ -90,10 +94,8 @@ public class Person extends HealthClubApp{
 
 		
 		/**
-		 * instanceOf를 이용하여 각 클래스의 타이틀이 출력되도록 하는 것도
-		 * 추가가 필요하다.
-		 * 
-		 * 번호 입력에 회원, 트레이너, 직원 클래스가 각 1000, 2000, 3000 번대가 아니면 예외처리하는 것도 추가 필요
+		 * 번호 입력에 회원, 트레이너, 직원 클래스가 
+		 * 각 1000, 2000, 3000 번대가 아니면 예외처리하는 것 추가 필요
 		 */
 	
 }
