@@ -54,10 +54,16 @@ public class HealthClubApp {
 	
 	public void saveMenu() {
 		System.out.println("--------------------");
-		System.out.println("1. 회원가입 완료 ");
+		System.out.println("1. 입력 정보 저장");
 		System.out.println("9. 취소 ");
 		System.out.println("--------------------");
 		System.out.println("메뉴를 선택해주세요.");
+		System.out.println("--------------------");
+	}
+	
+	public void showInfo() {
+		System.out.println("--------------------");
+		System.out.println("아래는 저장된 정보입니다.");
 		System.out.println("--------------------");
 	}
 }

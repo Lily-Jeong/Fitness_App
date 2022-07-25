@@ -2,10 +2,14 @@ package project01;
 import java.util.*;
 import java.lang.Exception;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.NoSuchFileException;
 
 public class Member extends Person {
 	private int id;
@@ -124,28 +128,52 @@ public class Member extends Person {
 
 	//이름을 검색해서 본인의 정보만 표시.
 	@Override
-	public void showInfo(String name) {
+	public void searchInfo() throws IOException {
 		System.out.println("이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
-		for(int i=0; i< member.size(); i++) {
+		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt"));
+		String[] token = str.split("\n\n");
+		for(int i=0; i<token.length; i++) {
+			if(token[i].contains(name)) {
+				System.out.println(token[i]);
+			}
+		}
+		/* for(int i=0; i< member.size(); i++) {
 			if(name.equals(member.get(i).getName())) {
 					System.out.println("회원 번호 : "+member.get(i).getId()+"\n이름 : "+member.get(i).getName()
 							+"\n주소 : "+member.get(i).getAddress()+"\n운동 목적 : "+member.get(i).getPurpose()
 							+"\n회원권 : "+member.get(i).getMemberType());
 			}
-		}
-	}//---------------------
+		} */
+	}//searchInfo()---------------------
 	//전체 정보를 다 출력함.
-	public void showAll() {
-		for(int i=0; i< member.size(); i++) {
+	public void showInfo() throws IOException {
+		HealthClubApp hc = new HealthClubApp();
+		hc.showInfo();
+		String fname = "/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt";
+		File file = new File(fname);
+		
+		FileInputStream input = new FileInputStream(file);	//노드 연결
+		InputStreamReader inputreader = new InputStreamReader(input, "UTF-8");
+		OutputStreamWriter outputwriter = new OutputStreamWriter(System.out, "UTF-8");
+		
+		int n = 0;
+		while((n=inputreader.read()) != -1) {
+			outputwriter.write(n);
+			outputwriter.flush();
+		}
+		inputreader.close();
+		/* for(int i=0; i< member.size(); i++) {
 				System.out.println("회원 번호 : "+member.get(i).getId()+"\n이름 : "+member.get(i).getName()
 						+"\n주소 : "+member.get(i).getAddress()+"\n운동 목적 : "+member.get(i).getPurpose()
 						+"\n회원권 : "+member.get(i).getMemberType());
-				System.out.println("--------------------");
-		}
-	}
+				System.out.println("--------------------"); 
+		} */
+	}//showInfo()----------------------
+	
 	//회원정보 삭제.
+	@Override
 	public void deleteInfo() throws IOException {
 		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
@@ -169,14 +197,13 @@ public class Member extends Person {
 				fw.flush();
 			}
 		}
-		System.out.println("삭제 완료!");
+		System.out.println("삭제 완료");
 		fw.close();
-		/*
-		for(int i=0; i<member.size(); i++) {
+		/*for(int i=0; i<member.size(); i++) {
 			if(name.equals(member.get(i).getName())) {
 				if(id == member.get(i).getId()) {
 					member.remove(member.get(i));
-					System.out.println("회원번호 "+id+"번, "+name+" 회원님의 정보가 삭제되었습니다.");
+					//System.out.println("회원번호 "+id+"번, "+name+" 회원님의 정보가 삭제되었습니다.");
 				} else {
 					System.out.println("찾을 수 없는 회원 정보입니다. 다시 입력해주세요.");
 					return;
@@ -186,16 +213,23 @@ public class Member extends Person {
 	}//----------
 	
 	public void memberLimit() throws IOException {
-		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt"));
-		String[] token = str.split("\n\n");
-		int count = 0;
-		ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
-		for(int i = 0; i < token.length; i++) {
-			count += 1;
-			if(count == 30) {
-				System.out.println("회원 등록이 마감되었습니다. 메인 화면으로 돌아갑니다.");
-				return;
+		try {
+			String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt"));
+			String[] token = str.split("\n\n");
+			int count = 0;
+			String x = "회원";
+			ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
+			for(int i = 0; i < token.length; i++) {
+				if(token[i].contains(x)) {
+					count += 1;
+					if(count == 30) {
+						System.out.println("회원 등록이 마감되었습니다. 메인 화면으로 돌아갑니다.");
+						return;
+					}
+				}
 			}
+		} catch(NoSuchFileException e) {
+			
 		}
 	}
 

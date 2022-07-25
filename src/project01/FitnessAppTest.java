@@ -42,13 +42,13 @@ public class FitnessAppTest {
 					int input2 = sc.nextInt();
 					switch(input2) {
 					case 1 : input2 = 1;	//회원 전체 정보를 보여주는 메뉴.
-						m1.showAll();
+						m1.showInfo();
 						continue;
 					case 2 : input2 = 2;	// 트레이너 전체 정보를 보여주는 메뉴.
-						t1.showAll();
+						t1.showInfo();
 						continue;
 					case 3 : input2 = 3;	// 스태프 전체 정보를 보여주는 메뉴.
-						s1.showAll();
+						s1.showInfo();
 						continue;
 					case 4 : input2 = 4;
 						continue;
@@ -62,13 +62,13 @@ public class FitnessAppTest {
 					int input3 = sc.nextInt();
 					switch(input3) {
 					case 1 : input3 = 1;	// 회원 이름 검색 => 해당 정보만 출력.
-						m1.showInfo(null);
+						m1.searchInfo();
 						continue;
 					case 2 : input3 = 2;	// 트레이너 이름 검색 => 해당 정보만 출력.
-						t1.showInfo(null);
+						t1.searchInfo();
 						continue;
 					case 3 : input3 = 3;	// 스태프 이름 검색 => 해당 정보만 출력.
-						s1.showInfo(null);
+						s1.searchInfo();
 						continue;
 					case 4 : input3 = 4;
 						continue;

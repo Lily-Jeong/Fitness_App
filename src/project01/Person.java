@@ -1,5 +1,7 @@
 package project01;
 
+import java.io.IOException;
+
 public abstract class Person {
 	
 	protected String name;
@@ -19,11 +21,11 @@ public abstract class Person {
 		this.address = address;
 	}
 	
-
-	//추상화해서 자식 클래스들에서 재정의할 메뉴들 
-	abstract public void showInfo(String name);
-
-	abstract public void showAll();
+	//추상화해서 오버라이딩 할 메서드들.
+	abstract public void searchInfo() throws IOException;
 	
+	abstract public void showInfo() throws IOException;
+	
+	abstract public void deleteInfo() throws IOException;
 	
 }

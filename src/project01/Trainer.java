@@ -1,7 +1,17 @@
 package project01;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.lang.Exception;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class Trainer extends Person {
@@ -32,17 +42,6 @@ public class Trainer extends Person {
 	public Trainer() {
 		
 	}
-	public Trainer(int id) throws IDFormatException {
-		if(id == 0) {
-			throw new IDFormatException("트레이너번호는 0번일 수 없습니다. 다시 입력해주세요.");
-		} else if(id > 3000 || id < 2000) {
-			throw new IDFormatException("트레이너번호는 2000번대로만 지정 가능합니다. 다시 입력해주세요.");
-		}
-		this.id = id;
-	}
-	public Trainer(String name) {
-		this.name = name;
-	}
 	public Trainer(int id, String name, String address, String type, String award) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("트레이너번호는 0번일 수 없습니다. 다시 입력해주세요.");
@@ -58,21 +57,19 @@ public class Trainer extends Person {
 
 	//트레이너 정보 입력받을 배열 생성.
 	ArrayList<Trainer> trainers = new ArrayList<Trainer>();
-	public void trainerRegister() {	//1-2 트레이너 등록.
+	
+	//1-2 트레이너 등록.
+	public void trainerRegister() throws IOException {	
+		HealthClubApp hc = new HealthClubApp();
 		int id;
 		String name;
 		String address;
 		String type;
 		String award;
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("트레이너번호를 입력하세요 => ");
 		id = sc.nextInt();
-//		try {
-//			trainers.add(new Trainer(id));
-//		} catch (IDFormatException e) {
-//			System.out.println(e.getMessage());
-//			return;
-//		}
 		System.out.println("이름을 입력하세요 => ");
 		name = sc.next();
 		System.out.println("주소를 입력하세요 => ");
@@ -83,6 +80,26 @@ public class Trainer extends Person {
 		award = sc.next();
 		try {
 			trainers.add(new Trainer(id, name, address, type, award));
+			String title = "---------- 트레이너 정보 ----------";
+			String content = title+"\n이름 : "+name+"\n트레이너 번호 : "+id+"\n주소 : "+address
+					+"\n전문 분야 : "+type+"\n수상 경력 : "+award+"\n\n";
+			while(true) {
+				hc.saveMenu();
+				int i = sc.nextInt();
+				switch(i) {
+				case 1 : String fileName = "/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/trainerlist.txt";
+					try {
+						FileWriter fw = new FileWriter(fileName, true);
+						fw.write(content);
+						fw.flush();
+						fw.close();
+						System.out.println("트레이너 정보가 정상적으로 등록되었습니다.");
+						return;
+					} catch(IOException e) {
+						System.out.println("파일을 저장하는 중 에러가 발생했습니다."+e.getMessage());
+					}
+				}
+			}
 		} catch(IDFormatException e) {
 			System.out.println(e.getMessage());
 		}
@@ -91,46 +108,87 @@ public class Trainer extends Person {
 	
 	//트레이너 이름 검색 = > 해당 트레이너 정보만 출력.
 	@Override
-	public void showInfo(String name) {
+	public void searchInfo() throws IOException {
 		System.out.println("트레이너 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
-		for(int i=0; i< trainers.size(); i++) {
+		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/trainerlist.txt"));
+		String[] token = str.split("\n\n");
+		for(int i=0; i<token.length; i++) {
+			if(token[i].contains(name)) {
+				System.out.println(token[i]);
+			}
+		}
+		/* for(int i=0; i< trainers.size(); i++) {
 			if(name.equals(trainers.get(i).getName())) {
 					System.out.println("트레이너 번호 : "+trainers.get(i).getId()+"\n이름 : "+trainers.get(i).getName()
 							+"\n주소 : "+trainers.get(i).getAddress()+"\n전분 분야 : "+trainers.get(i).getType()
 							+"\n수상 이력 : "+trainers.get(i).getAward());
 			}
-		}
+		} */
 	}
-	
 	//트레이너 전체 정보 출력.
-	public void showAll() {
-		for(int i=0; i < trainers.size(); i++) {
+	@Override
+	public void showInfo() throws IOException {
+		HealthClubApp hc = new HealthClubApp();
+		hc.showInfo();
+		String fname = "/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/trainerlist.txt";
+		File file = new File(fname);
+		
+		FileInputStream input = new FileInputStream(file);	//노드 연결
+		InputStreamReader inputreader = new InputStreamReader(input, "UTF-8");
+		OutputStreamWriter outputwriter = new OutputStreamWriter(System.out, "UTF-8");
+		
+		int n = 0;
+		while((n=inputreader.read()) != -1) {
+			outputwriter.write(n);
+			outputwriter.flush();
+		}
+		inputreader.close();
+		/* for(int i=0; i < trainers.size(); i++) {
 			System.out.println("트레이너 번호 : "+trainers.get(i).getId()+"\n이름 : "+trainers.get(i).getName()+
 			"\n전문 분야 : "+trainers.get(i).getType()+"\n수상경력 : "+trainers.get(i).getAward());
 			System.out.println();
-		}
+		} */
 	}//----------------------
+	
 	//트레이너 정보 삭제 
-	public void deleteInfo() {
+	public void deleteInfo() throws IOException {
 		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
 		System.out.println("삭제할 트레이너 번호를 입력하세요 => ");
-		id = sc.nextInt();
-		for(int i=0; i<trainers.size(); i++) {
+		String num = sc.next();
+		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/trainerlist.txt"));
+		String[] token = str.split("\n\n");
+		
+		File file = new File("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/trainerlist.txt");
+		FileWriter fw = new FileWriter(file);
+		fw.write("");
+		fw.flush();
+		ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
+		for(int i=0; i<token.length; i++) {
+			if(token[i].contains(name) && token[i].contains(num)) {
+				System.out.println("트레이너 번호 : "+num+", 이름 : "+name+" 트레이너의 정보를 삭제합니다.");
+			} else {
+				String returned = tokens.get(i)+"\n\n";
+				fw.write(returned);
+				fw.flush();
+			}
+		}
+		System.out.println("삭제 완료");
+		fw.close();
+		/* for(int i=0; i<trainers.size(); i++) {
 			if(name.equals(trainers.get(i).getName())) {
 				if(id == trainers.get(i).getId()) {
 					trainers.remove(trainers.get(i));
-					System.out.println("트레이너 번호 "+id+"번, "+name+" 트레이너의 정보가 삭제되었습니다.");
+					//System.out.println("트레이너 번호 "+id+"번, "+name+" 트레이너의 정보가 삭제되었습니다.");
 				} else {
 					System.out.println("찾을 수 없는 트레이너 정보입니다. 다시 입력해주세요.");
 					return;
 				}
 			} 
-		}
+		} */
+		
 	}
-
-	
 }
