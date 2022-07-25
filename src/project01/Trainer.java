@@ -39,6 +39,9 @@ public class Trainer extends Person {
 		}
 		this.id = id;
 	}
+	public Trainer(String name) {
+		this.name = name;
+	}
 	public Trainer(int id, String name, String address, String type, String award) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("트레이너번호는 0번일 수 없습니다. 다시 입력해주세요.");
@@ -63,12 +66,12 @@ public class Trainer extends Person {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("트레이너번호를 입력하세요 => ");
 		id = sc.nextInt();
-		try {
-			trainers.add(new Trainer(id));
-		} catch (IDFormatException e) {
-			System.out.println(e.getMessage());
-			return;
-		}
+//		try {
+//			trainers.add(new Trainer(id));
+//		} catch (IDFormatException e) {
+//			System.out.println(e.getMessage());
+//			return;
+//		}
 		System.out.println("이름을 입력하세요 => ");
 		name = sc.next();
 		System.out.println("주소를 입력하세요 => ");

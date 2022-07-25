@@ -67,12 +67,15 @@ public class Member extends Person {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("회원번호를 입력하세요 => ");
 		id = sc.nextInt();
-		try {
-			member.add(new Member(id));
-		} catch (IDFormatException e) {
-			System.out.println(e.getMessage());
-			return;
-		}
+		/* 마지막에 회원 정보 전체를 arraylist에 추가하도록 되어있기 때문에,
+		 * 이 지점에서 try ~ catch 문을 사용하면, id번호만 입력된 배열이 추가되버림.
+		 */
+//		try {
+//			member.add(new Member(id));
+//		} catch (IDFormatException e) {
+//			System.out.println(e.getMessage());
+//			return;
+//		}
 		System.out.println("이름을 입력하세요 => ");
 		name = sc.next();
 		System.out.println("주소를 입력하세요 => ");
