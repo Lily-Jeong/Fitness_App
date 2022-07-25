@@ -113,8 +113,7 @@ public class Trainer extends Person {
 		}
 	}//----------------------
 	//트레이너 정보 삭제 
-	@Override
-	public void deleteInfo(String name, int id) {
+	public void deleteInfo() {
 		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();

@@ -25,6 +25,5 @@ public abstract class Person {
 
 	abstract public void showAll();
 	
-	abstract public void deleteInfo(String name, int id);
 	
 }

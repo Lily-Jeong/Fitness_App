@@ -107,8 +107,7 @@ public class Staff extends Person {
 		}
 	}//----------------
 	//스태프 정보 삭제 
-	@Override
-	public void deleteInfo(String name, int id) {
+	public void deleteInfo() {
 		System.out.println("삭제할 스태프의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();

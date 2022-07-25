@@ -2,6 +2,10 @@ package project01;
 import java.util.*;
 import java.lang.Exception;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Member extends Person {
 	private int id;
@@ -44,6 +48,7 @@ public class Member extends Person {
 		this.address = address;
 		this.purpose = purpose;
 		this.memberType = memberType;
+		
 	}
 	
 	//정보 저장되는 배열.
@@ -53,6 +58,7 @@ public class Member extends Person {
 	//1-1 회원 등록.
 	public void memberRegister() throws IOException {	
 		
+		HealthClubApp hc = new HealthClubApp();
 		int id;
 		String name;
 		String address;
@@ -88,6 +94,27 @@ public class Member extends Person {
 			} else {
 				try {
 					member.add(new Member(id, name, address, purpose, memberType));
+					String title = "---------- 회원정보 ----------";
+					String content = title+"\n이름 : "+name+"\n회원번호 : "+id+"\n주소 : "+address
+							+"\n운동 목적 : "+purpose+"\n회원권 : "+memberType+"\n\n";
+					while(true) {
+						hc.saveMenu();
+						int i = sc.nextInt();
+						switch(i) {
+						case 1 : String fileName = "/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt";
+							try {
+								FileWriter fw = new FileWriter(fileName, true);
+								fw.write(content);
+								fw.flush();
+								fw.close();
+								System.out.println("회원 정보가 정상적으로 등록되었습니다.");
+								return;
+							} catch(IOException e) {
+								System.out.println("파일을 저장하는 중 에러가 발생했습니다."+e.getMessage());
+							}
+						}
+
+					}
 				} catch (IDFormatException e) {
 					System.out.println(e.getMessage());
 				}
@@ -119,12 +146,32 @@ public class Member extends Person {
 		}
 	}
 	//회원정보 삭제.
-	public void deleteInfo(String name, int id) {
+	public void deleteInfo() throws IOException {
 		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
 		System.out.println("삭제할 회원 번호를 입력하세요 => ");
-		id = sc.nextInt();
+		String num = sc.next();
+		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt"));
+		String[] token = str.split("\n\n");
+		
+		File file = new File("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt");
+		FileWriter fw = new FileWriter(file);
+		fw.write("");
+		fw.flush();
+		ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
+		for(int i=0; i<token.length; i++) {
+			if(token[i].contains(name) && token[i].contains(num)) {
+				System.out.println("회원번호 : "+num+", 이름 : "+name+" 회원님의 정보를 삭제합니다.");
+			} else {
+				String returned = tokens.get(i)+"\n\n";
+				fw.write(returned);
+				fw.flush();
+			}
+		}
+		System.out.println("삭제 완료!");
+		fw.close();
+		/*
 		for(int i=0; i<member.size(); i++) {
 			if(name.equals(member.get(i).getName())) {
 				if(id == member.get(i).getId()) {
@@ -135,11 +182,15 @@ public class Member extends Person {
 					return;
 				} 
 			}
-		}
-	}
+		} */
+	}//----------
+	
 	public void memberLimit() throws IOException {
+		String str = Files.readString(Paths.get("/Users/lilyjeong/Desktop/Project01_JAVA/FitnessApp/memberlist.txt"));
+		String[] token = str.split("\n\n");
 		int count = 0;
-		for(int i = 0; i < member.size(); i++) {
+		ArrayList<String> tokens = new ArrayList<>(Arrays.asList(token));
+		for(int i = 0; i < token.length; i++) {
 			count += 1;
 			if(count == 30) {
 				System.out.println("회원 등록이 마감되었습니다. 메인 화면으로 돌아갑니다.");
