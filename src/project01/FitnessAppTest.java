@@ -84,10 +84,10 @@ public class FitnessAppTest {
 						m1.deleteInfo(null, 0);
 						continue;
 					case 2 : input4 = 2;
-						t1.deleteInfo(null);
+						t1.deleteInfo(null, 0);
 						continue;
 					case 3 : input4 = 3;
-						s1.deleteInfo(null);
+						s1.deleteInfo(null, 0);
 						continue;
 					case 4 : input4 = 4;
 						continue;

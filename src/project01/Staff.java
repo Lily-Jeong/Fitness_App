@@ -41,7 +41,7 @@ public class Staff extends Person {
 	public Staff(int id, String name, String address, String dept, double workYears) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("스태프번호는 0번일 수 없습니다. 다시 입력해주세요.");
-		} else if(id > 3000 || id < 2000) {
+		} else if(id > 4000 || id < 2000) {
 			throw new IDFormatException("스태프번호는 3000번대로만 지정 가능합니다. 다시 입력해주세요.");
 		}
 		this.id = id;
@@ -107,14 +107,23 @@ public class Staff extends Person {
 		}
 	}//----------------
 	//스태프 정보 삭제 
-	public void deleteInfo(String name) {
+	@Override
+	public void deleteInfo(String name, int id) {
 		System.out.println("삭제할 스태프의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
+		System.out.println("삭제할 스태프의 번호를 입력하세요 => ");
+		id = sc.nextInt();
 		for(int i=0; i<staff.size(); i++) {
 			if(name.equals(staff.get(i).getName())) {
-				staff.remove(staff.get(i));
-			}
+				if(id == staff.get(i).getId()) {
+					staff.remove(staff.get(i));
+					System.out.println("스태프 번호 "+id+"번, "+name+" 직원의 정보가 삭제되었습니다.");
+				} else {
+					System.out.println("찾을 수 없는 스태프 정보입니다. 다시 입력해주세요.");
+					return;
+				}
+			} 
 		}
 	}
 

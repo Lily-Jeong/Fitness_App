@@ -113,15 +113,25 @@ public class Trainer extends Person {
 		}
 	}//----------------------
 	//트레이너 정보 삭제 
-	public void deleteInfo(String name) {
+	@Override
+	public void deleteInfo(String name, int id) {
 		System.out.println("삭제할 트레이너의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
+		System.out.println("삭제할 트레이너 번호를 입력하세요 => ");
+		id = sc.nextInt();
 		for(int i=0; i<trainers.size(); i++) {
 			if(name.equals(trainers.get(i).getName())) {
-				trainers.remove(trainers.get(i));
-			}
+				if(id == trainers.get(i).getId()) {
+					trainers.remove(trainers.get(i));
+					System.out.println("트레이너 번호 "+id+"번, "+name+" 트레이너의 정보가 삭제되었습니다.");
+				} else {
+					System.out.println("찾을 수 없는 트레이너 정보입니다. 다시 입력해주세요.");
+					return;
+				}
+			} 
 		}
 	}
+
 	
 }

@@ -139,16 +139,13 @@ public class Member extends Person {
 				if(id == member.get(i).getId()) {
 					member.remove(member.get(i));
 					System.out.println("회원번호 "+id+"번, "+name+" 회원님의 정보가 삭제되었습니다.");
-				}
-			} else {
-				System.out.println("찾을 수 없는 회원번호입니다. 다시 입력해주세요.");
+				} else {
+					System.out.println("찾을 수 없는 회원 정보입니다. 다시 입력해주세요.");
+					return;
+				} 
 			}
 		}
 	}
-	@Override
-	public void deleteInfo(String name) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }
