@@ -6,6 +6,7 @@ public class Staff extends Person {
 	private String dept;
 	private double workYears;
 	
+	//getter & setter
 	public int getId() {
 		return id;
 	}

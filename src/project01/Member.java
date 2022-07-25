@@ -7,6 +7,7 @@ public class Member extends Person {
 	private int purpose;
 	private int memberType;
 	
+	
 	//getter & setter
 	public int getId() {
 		return id;

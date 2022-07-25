@@ -9,6 +9,7 @@ public class Trainer extends Person {
 	private String type;
 	private String award;
 	
+	//getter & setter
 	public int getId() {
 		return id;
 	}
