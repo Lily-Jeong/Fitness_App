@@ -81,7 +81,7 @@ public class FitnessAppTest {
 					int input4 = sc.nextInt();
 					switch(input4) {
 					case 1 : input4 = 1;
-						m1.deleteInfo(null);
+						m1.deleteInfo(null, 0);
 						continue;
 					case 2 : input4 = 2;
 						t1.deleteInfo(null);

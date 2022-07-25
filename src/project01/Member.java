@@ -32,14 +32,6 @@ public class Member extends Person {
 	public Member() {
 		
 	}
-	public Member(int id) throws IDFormatException {
-		if(id == 0) {
-			throw new IDFormatException("회원번호는 0번일 수 없습니다. 다시 입력해주세요.");
-		} else if(id > 2000 || id < 1000) {
-			throw new IDFormatException("회원번호는 1000번대로만 지정 가능합니다. 다시 입력해주세요.");
-		}
-		this.id = id;
-	}
 	public Member(int id, String name, String address, int purpose, int memberType) throws IDFormatException {
 		if(id == 0) {
 			throw new IDFormatException("회원번호는 0번일 수 없습니다. 다시 입력해주세요.");
@@ -65,6 +57,8 @@ public class Member extends Person {
 		String address;
 		int purpose;
 		int memberType;
+		int count = 0;
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("회원번호를 입력하세요 => ");
 		id = sc.nextInt();
@@ -106,7 +100,7 @@ public class Member extends Person {
 				} catch (IDFormatException e) {
 					System.out.println(e.getMessage());
 				}
-			}
+			} 
 		}
 	}
 
@@ -134,15 +128,27 @@ public class Member extends Person {
 		}
 	}
 	//회원정보 삭제.
-	public void deleteInfo(String name) {
+	public void deleteInfo(String name, int id) {
 		System.out.println("삭제할 회원의 이름을 입력하세요 => ");
 		Scanner sc = new Scanner(System.in);
 		name = sc.next();
+		System.out.println("삭제할 회원 번호를 입력하세요 => ");
+		id = sc.nextInt();
 		for(int i=0; i<member.size(); i++) {
 			if(name.equals(member.get(i).getName())) {
-				member.remove(member.get(i));
+				if(id == member.get(i).getId()) {
+					member.remove(member.get(i));
+					System.out.println("회원번호 "+id+"번, "+name+" 회원님의 정보가 삭제되었습니다.");
+				}
+			} else {
+				System.out.println("찾을 수 없는 회원번호입니다. 다시 입력해주세요.");
 			}
 		}
+	}
+	@Override
+	public void deleteInfo(String name) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
