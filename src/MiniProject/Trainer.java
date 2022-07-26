@@ -4,16 +4,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 
+ * 헬스장 회원/트레이너/직원 관리 프로그램에서 사용하는 트레이너 클래스
+ *
+ */
 public class Trainer extends Person{
 	private int id;
 	private String type;
 	private String award;
 		
-	//기본생성자
+	/**
+	 * 기본생성자
+	 */
 	public Trainer() {
 	}
 	
-	//매개변수 받는 생성자
+	/**
+	 * 매개변수 받는 생성자
+	 * @param name
+	 * @param address
+	 * @param id
+	 * @param type
+	 * @param award
+	 */
 	public Trainer(String name, String address,int id, String type, String award) {
 		this.name = name;
 		this.address = address;
@@ -25,31 +39,55 @@ public class Trainer extends Person{
 	/**
 	 * 2천번대의 숫자가 아닐 시 예외처리
 	 */
-	//사용자 예외 클래스 생성자
 		public Trainer(int id) throws IdException{
-			if(id>=2000 || id <1000) {
-				throw new IdException("회원 ID는 2000~2999의 숫자여야 합니다.");
+			if(id>=3000 || id <2000) {
+				throw new IdException("트레이너 ID는 2000~2999의 숫자여야 합니다.");
 			}
 			this.id = id;
 		}
 	
 		
-	//getter, setter
+	/**
+	 * getId
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
+	/**
+	 * setId
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	/**
+	 * getType
+	 * @return
+	 */
 	public String getType() {
 		return type;
 	}
+	/**
+	 * setType
+	 * @param type
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	/**getAward
+	 * 
+	 * @return
+	 */
 	public String getAward() {
 		return award;
 	}
+	/**
+	 * setAward
+	 * @param award
+	 */
 	public void setAward(String award) {
 		this.award = award;
 	}
@@ -128,7 +166,7 @@ public class Trainer extends Person{
 				int sv = sc.nextInt();
 				switch(sv){
 					case 1:
-						String fileName = "C:/java_project/informationList.txt";
+						String fileName = "src/MiniProject/informationList.txt";
 						try {
 							FileWriter fw = new FileWriter(fileName, true);
 							fw.write(content);
