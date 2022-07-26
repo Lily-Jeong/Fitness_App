@@ -3,16 +3,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+
+/**
+ * 
+ * 헬스장 회원/트레이너/직원 관리 프로그램에서 사용하는 직원 클래스
+ */
 public class Staff extends Person{
 	private int id;
 	private String dept;
 	private String workYears;
 		
-	//기본생성자
+	/**
+	 * 기본생성자
+	 */
 	public Staff() {
 	}
 	
-	//매개변수 받는 생성자
+	/**
+	 * 매개변수 받는 생성자
+	 * @param name
+	 * @param address
+	 * @param id
+	 * @param dept
+	 * @param workYears
+	 */
 	public Staff(String name, String address,int id, String dept, String workYears) {
 		this.id = id;
 		this.dept = dept;
@@ -22,38 +36,57 @@ public class Staff extends Person{
 	/**
 	 * 3천번대의 숫자가 아닐 시 예외처리
 	 */
-	//사용자 예외 클래스 생성자
 		public Staff(int id) throws IdException{
-			if(id>=2000 || id <1000) {
+			if(id>=4000 || id <3000) {
 				throw new IdException("직원 ID는 3000~3999의 숫자여야 합니다.");
 			}
 			this.id = id;
 		}
 	
 	/**
-	 * getter, setter
+	 * getId
 	 * @return
 	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * setId
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * getDept
+	 * @return
+	 */
 	public String getDept() {
 		return dept;
 	}
 
+	/**
+	 * setDept
+	 * @param dept
+	 */
 	public void setDept(String dept) {
 		this.dept = dept;
 	}
 
+	/**
+	 * getWorkYears
+	 * @return
+	 */
 	public String getWorkYears() {
 		return workYears;
 	}
 
+	/**
+	 * setWorkYears
+	 * @param workYears
+	 */
 	public void setWorkYears(String workYears) {
 		this.workYears = workYears;
 	}
@@ -130,7 +163,7 @@ public class Staff extends Person{
 				int sv = sc.nextInt();
 				switch(sv){
 					case 1:
-						String fileName = "C:/java_project/informationList.txt";
+						String fileName = "src/MiniProject/informationList.txt";
 						try {
 							FileWriter fw = new FileWriter(fileName, true);
 							fw.write(content);

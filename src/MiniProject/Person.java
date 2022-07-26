@@ -6,30 +6,41 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * 회원, 트레이너, 직원 메뉴 선택 클래스
+ */
 public class Person extends HealthClubApp{
 	String name;
 	String address;
 	
-	void showInfo() {
-	}
-	
 	/**
-	 * setter, getter
+	 * getName
 	 * @return
-	 */
-	
+	 */	
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * setName
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * getAddress
+	 * @return
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * setAddress
+	 * @param address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -94,9 +105,6 @@ public class Person extends HealthClubApp{
 				continue;
 			}break;
 		}
-}
-		/**
-		 * 번호 입력에 회원, 트레이너, 직원 클래스가 
-		 * 각 1000, 2000, 3000 번대가 아니면 예외처리하는 것 추가 필요
-		 */
+	}
+		
 }

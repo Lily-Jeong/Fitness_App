@@ -6,16 +6,31 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.nio.file.NoSuchFileException;
 
+
+/**
+ * 
+ * 헬스장 회원/트레이너/직원 관리 프로그램에서 사용하는 회원 클래스
+ *
+ */
 public class Member extends Person{
 	private int id;
 	private String purpose;
 	private String memberType;
 		
-	//기본생성자
+	/**
+	 * 기본생성자
+	 */
 	public Member() {
 	}
 	
-	//매개변수 받는 생성자
+	/**
+	 * 매개변수 받는 생성자
+	 * @param name
+	 * @param address
+	 * @param id
+	 * @param purpose
+	 * @param memberType
+	 */
 	public Member(String name, String address, int id, String purpose, String memberType) {
 		this.name = name;
 		this.address = address;
@@ -27,7 +42,6 @@ public class Member extends Person{
 	/**
 	 * 천번대의 숫자가 아닐 시 예외처리
 	 */
-	//사용자 예외 클래스 생성자
 	public Member(int id) throws IdException{
 		if(id>=2000 || id <1000) {
 			throw new IdException("회원 ID는 1000~1999의 숫자여야 합니다.");
@@ -36,25 +50,46 @@ public class Member extends Person{
 	}
 	
 	/**
-	 * getter, setter
+	 * getId
 	 * @return
 	 */
-	
 	public int getId() {
 		return id;
 	}
+	/**
+	 * setId
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	/**
+	 * getPurpose
+	 * @return
+	 */
 	public String getPurpose() {
 		return purpose;
 	}
+	/**
+	 * setPurpose
+	 * @param purpose
+	 */
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
+	
+	/**
+	 * getMemberType
+	 * @return
+	 */
 	public String getMemberType() {
 		return memberType;
 	}
+	/**
+	 * setMemberType
+	 * @param memberType
+	 */
 	public void setMemberType(String memberType) {
 		this.memberType = memberType;
 	}
@@ -75,7 +110,7 @@ public class Member extends Person{
 	 */
 	public void thirdty() throws IOException{
 		try {
-			String str = Files.readString(Paths.get("C:/java_project/informationList.txt"));
+			String str = Files.readString(Paths.get("src/MiniProject/informationList.txt"));
 			String[] token = str.split("\n\n");
 			int count=0;
 			String c = "-회원-";
@@ -163,7 +198,7 @@ public class Member extends Person{
 				int sv = sc.nextInt();
 				switch(sv){
 					case 1:
-						String fileName = "C:/java_project/informationList.txt";
+						String fileName = "src/MiniProject/informationList.txt";
 						try {
 							FileWriter fw = new FileWriter(fileName, true);
 							fw.write(content);

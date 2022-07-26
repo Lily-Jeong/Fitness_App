@@ -9,8 +9,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * 헬스장 회원/트레이너/직원 관리 프로그램
+ *
+ */
 public class HealthClubApp {
-	
 	
 	/**
 	 * 실행하게 되면 txt 파일에 저장된 모든 정보가 출력된다.
@@ -20,7 +23,7 @@ public class HealthClubApp {
 		System.out.println("--------------");
 		System.out.println("아래는 등록된 정보입니다");
 		System.out.println("--------------");
-		String fname="C:/java_project/informationList.txt";
+		String fname="src/MiniProject/informationList.txt";
 		File file=new File(fname);
 		
 		FileInputStream fis=new FileInputStream(file);//노드 연결
@@ -54,7 +57,7 @@ public class HealthClubApp {
 		Scanner sc = new Scanner(System.in);
 		String name = sc.next();
 		
-		String str = Files.readString(Paths.get("C:/java_project/informationList.txt"));
+		String str = Files.readString(Paths.get("src/MiniProject/informationList.txt"));
 		
 		String[] token = str.split("\n\n");
 		
@@ -89,10 +92,10 @@ public class HealthClubApp {
 		System.out.println("--------------");
 		String num = sc.next();
 		
-		String str = Files.readString(Paths.get("C:/java_project/informationList.txt"));
+		String str = Files.readString(Paths.get("src/MiniProject/informationList.txt"));
 		String[] token = str.split("\n\n");
 		
-		File file = new File("C:/java_project/informationList.txt");		
+		File file = new File("src/MiniProject/informationList.txt");		
 		FileWriter fw = new FileWriter(file);
 		fw.write("");
 		fw.flush();
@@ -115,8 +118,12 @@ public class HealthClubApp {
 	
 	
 
-	public HealthClubApp() {
-	}
+	/**
+	 * 첫번째 메뉴를 보여주고 선택지에 따라 프로그램을 실행시키는 메인 함수
+	 * 
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) 
 	throws IOException{
 		HealthClubApp hc = new HealthClubApp();
